@@ -1,25 +1,16 @@
 const express = require("express");
 
-const { adminAuth, userAuth } = require("./middlewares/auth");
-
 const app = express();
 
-app.use("/admin", adminAuth);
-
-app.get("/admin/getAllData", (req, res) => {
-  res.send("All Data Sent");
-});
-
-app.get("/admin/deleteUser", (req, res) => {
-  res.send("User Deleted");
-});
-
-app.post("/user/login", (req, res) => {
-  res.send("User logged in successfully");
-});
-
-app.get("/user", userAuth, (req, res) => {
+app.get("/getUserData", (req, res) => {
+  throw new Error("SHHHDADKPASD");
   res.send("Got User Data");
+});
+
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    res.status(500).send("Something went wrong");
+  }
 });
 
 app.listen(3000, () => {
